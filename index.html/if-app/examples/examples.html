@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+<p>ToDo List</p>
+<input class="js-input" placeholder="Todo Name">
+<input type="date">
+<button onclick="addToDo()">Add</button>
+<div class="js-todolist"></div>
+
+<script src="examples.js"></script>
+
+<script>
+const toDoList = [
+    
+{name:'wash dishes',
+dueDate:'09-01-2024' },
+
+{name:'make dinner',
+dueDate:'10-01-2024'},
+];
+
+function renderTo(){ 
+let toDoListHTML = '';
+for(i=0; i<toDoList.length ; i++){
+    const todoObject = toDoList[i];
+    const name= todoObject.name;
+    const dueDate = todoObject.dueDate;
+    const html=`<p>  ${name} ${dueDate}
+        ${todo}  <button onclick="toDoList.splice(${i},1);
+        renderTo();
+        ">Delete</button>
+        </p>`;
+    toDoListHTML += html;
+}
+console.log(toDoListHTML);
+document.querySelector('.js-todolist').innerHTML = toDoListHTML;
+
+}
+function addToDo(){
+const inputElement = document.querySelector('.js-input');
+const name = inputElement.value;
+
+toDoList.push(name);
+console.log(toDoList);
+renderTo();
+inputElement.value = '';
+}
+  
+
+ 
+
+
+</script>
+
+</body>
+
+</html>
